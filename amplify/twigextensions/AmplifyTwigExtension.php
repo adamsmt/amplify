@@ -32,6 +32,8 @@ class AmplifyTwigExtension extends Twig_Extension
       $html = strip_tags($html,'<h1><h2><h3><h4><h5><h6><a><p><ul><ol><li><blockquote><q><cite><ins><del><strong><em><code><pre><svg><table><thead><tbody><tfoot><th><tr><td><dl><dt><dd><article><section><header><footer><aside><figure><time><abbr><div><span><hr><small><br><amp-img><amp-audio><amp-video><amp-ad><amp-anim><amp-carousel><amp-fit-rext><amp-image-lightbox><amp-instagram><amp-lightbox><amp-twitter><amp-youtube>');
       #strips out stuff in brackets
       $html = preg_replace('#\s*\[.+\]\s*#U', ' ', $html);
+      #remove all style declarations from objects
+      $html = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $html);
       #adds layout responsive to images that are inline
       $html = preg_replace('/(<amp-img\b[^><]*)>/i', '$1 layout="responsive">', $html);
       #removes empty paragraphs
