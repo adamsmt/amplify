@@ -25,7 +25,7 @@ class AmplifyPlugin extends BasePlugin
     /**
      * Register twig extension
      */
-    public function hookAddTwigExtension()
+    public function addTwigExtension()
     {
         Craft::import('plugins.amplify.twigextensions.AmplifyTwigExtension');
         return new AmplifyTwigExtension();
