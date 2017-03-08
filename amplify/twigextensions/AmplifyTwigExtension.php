@@ -37,6 +37,11 @@ class AmplifyTwigExtension extends Twig_Extension
       #removes empty paragraphs
       $pattern = "/<p[^>]*><\\/p[^>]*>/";
       $html = preg_replace($pattern, '', $html);
+
+      #remove style=""
+      $pattern = '/style=\".+\"/';
+      $html = preg_replace($pattern, '', $html);
+
       return $html;
     }
 }
